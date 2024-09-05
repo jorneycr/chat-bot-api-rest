@@ -1,15 +1,24 @@
 const Chatbot = require('../models/chatbot');
 
+// Leer el archivo JSON con las preguntas
+const questionsData = require('../data/initialQuestions.js');
+
 exports.chat = async (req, res) => {
     const { question } = req.body;
 
     try {
+        if(question === '/preguntas'){
+            const questions = await Chatbot.find({});
+            const questionsList = questions.map(q => q.question);
+            return res.status(200).json(questionsList);
+        }
+        
         const response = await Chatbot.findOne({ question: question });
 
         if (response) {
             return res.json({ answer: response.answer });
         } else {
-            return res.json({ answer: 'Lo siento, no entiendo tu pregunta. ¿Podrías reformularla?' });
+            return res.json({ answer: 'Lo siento, no entiendo tu pregunta. ¿Podrías reformularla?, o escribe /preguntas para ver más posibles preguntas' });
         }
     } catch (error) {
         console.error('Error al buscar en la base de datos:', error);
@@ -27,6 +36,25 @@ exports.questions = async (req, res) => {
         return res.status(500).json({ error: 'Ocurrió un error al obtener las preguntas.' });
     }
 }
+
+exports.importQuestions = async (req, res) => {
+    try {
+      for (const questionData of questionsData) {
+        const newQuestion = new Chatbot(questionData); 
+
+        try {
+          await newQuestion.save();
+        } catch (error) {
+          console.error(`Error al agregar la pregunta: ${newQuestion.question}`, error.message);
+        }
+      }
+  
+      return res.status(200).json({ mensaje: 'Todas las preguntas han sido importadas exitosamente.' });
+    } catch (error) {
+      console.error('Error al importar las preguntas:', error.message);
+      return res.status(500).json({ error: 'Ocurrió un error al importar las preguntas.' });
+    }
+  };
 
 exports.addQuestion = async (req, res) => {
     const chatbot = new Chatbot(req.body);

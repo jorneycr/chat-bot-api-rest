@@ -13,7 +13,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{}\r\n",
@@ -43,7 +49,13 @@
 			"name": "Chat",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"question\": \"¿Cuál es tu nombre?\"\r\n}\r\n",
@@ -72,10 +84,16 @@
 			"name": "Crear",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"question\": \"¿Cuál es tu nombre?\",\r\n  \"answer\": \"Soy un chatbot de demostración.\"\r\n}\r\n",
+					"raw": "{\r\n  \"question\": \"bien\",\r\n  \"answer\": \"Eso es bueno\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -98,13 +116,59 @@
 			"response": []
 		},
 		{
+			"name": "Agregar preguntas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/chat/importQuestions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"chat",
+						"importQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Obtener por ID",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -136,10 +200,9 @@
 				"method": "PUT",
 				"header": [
 					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -174,7 +237,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{}\r\n",
@@ -205,10 +274,9 @@
 				"method": "DELETE",
 				"header": [
 					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvcm5leWNyQGhvdG1haWwuY29tIiwibm9tYnJlIjoiSm9ybmV5IiwiaWQiOiI2NmQ5MzNlZjVlMGQzYTc1ZTk1MmJmNTciLCJpYXQiOjE3MjU1MTA3NTMsImV4cCI6MTcyNTUxNDM1M30.CcdpD4Y73jrnrjM-hVUNH4gIS51d1OOd2ktZc5WRIW4",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -231,6 +299,64 @@
 						"api",
 						"chatbot",
 						"66d8e220d66b4980f211906d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"jorneycr@hotmail.com\",\r\n    \"nombre\": \"Jorney\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"jorneycr@hotmail.com\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"login"
 					]
 				}
 			},

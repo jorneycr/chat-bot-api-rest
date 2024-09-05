@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
-require("dotenv").config({ path: "./variables.env" });
+require("dotenv").config({ path: "./.env.development" });
 
 //cors permite que un cliente se conecte a otro servidor para el intercambio de recursos
 const cors = require("cors");
