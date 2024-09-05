@@ -26,6 +26,9 @@ const corsOptions = {
             callback(new Error("No permitido por CORS")); // Bloquear la solicitud
         }
     },
+    methods: 'GET,HEAD,POST', // Especifica los métodos HTTP permitidos
+    credentials: true, // Si necesitas enviar cookies o credenciales
+    optionsSuccessStatus: 204 // Para manejar navegadores que rechazan 204 como respuesta exitosa
 };
 
 app.use(cors(corsOptions));
