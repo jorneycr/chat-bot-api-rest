@@ -17,22 +17,22 @@ const whitelist = [
     process.env.FRONTEND_URL_DEV
 ];
 
-const corsOptions = {
-    origin: (origin, callback) => {
-        // Permitir todas las solicitudes en el entorno de desarrollo
-        if (!origin || whitelist.includes(origin)) {
-            callback(null, true); // Permitir la solicitud
-        } else {
-            callback(new Error("No permitido por CORS")); // Bloquear la solicitud
-        }
-    },
-    methods: 'GET,HEAD,POST', // Especifica los métodos HTTP permitidos
-    credentials: true, // Si necesitas enviar cookies o credenciales
-    optionsSuccessStatus: 204 // Para manejar navegadores que rechazan 204 como respuesta exitosa
-};
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         // Permitir todas las solicitudes en el entorno de desarrollo
+//         if (!origin || whitelist.includes(origin)) {
+//             callback(null, true); // Permitir la solicitud
+//         } else {
+//             callback(new Error("No permitido por CORS")); // Bloquear la solicitud
+//         }
+//     },
+//     methods: 'GET,HEAD,POST', // Especifica los métodos HTTP permitidos
+//     credentials: true, // Si necesitas enviar cookies o credenciales
+//     optionsSuccessStatus: 204 // Para manejar navegadores que rechazan 204 como respuesta exitosa
+// };
 
 // app.use(cors(corsOptions));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB Atlas
@@ -46,16 +46,24 @@ mongoose.connect(process.env.CONNECTION_STRING).then(() => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const corsOptions = {
+    origin: [process.env.FRONTEND_URL_PROD, process.env.FRONTEND_URL_DEV],
+    methods: 'GET,HEAD,POST',
+    credentials: true,
+    optionsSuccessStatus: 204
+};
+
+app.use(cors(corsOptions));
 
 app.use("/", routes());
 
 //puerto
 const host = process.env.HOST;
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 //iniciar app
 app.listen(port, host, () => {
-    console.log("El servidor esta funcinando");
+    console.log(`El servidor está funcionando en el puerto ${port}`);
 });
 
 // Exportar app para pruebas
