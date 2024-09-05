@@ -31,8 +31,8 @@ const corsOptions = {
     optionsSuccessStatus: 204 // Para manejar navegadores que rechazan 204 como respuesta exitosa
 };
 
-app.use(cors(corsOptions));
-// app.use(cors());
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB Atlas
