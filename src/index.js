@@ -10,8 +10,26 @@ const cors = require("cors");
 //crear servidor
 const app = express();
 
-// Middleware
-app.use(cors());
+//habilitar cors con lista blanca
+//definir un dominio para recibir las peticiones
+const whitelist = [
+    process.env.FRONTEND_URL_PROD,
+    process.env.FRONTEND_URL_DEV
+];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        // Permitir todas las solicitudes en el entorno de desarrollo
+        if (!origin || whitelist.includes(origin)) {
+            callback(null, true); // Permitir la solicitud
+        } else {
+            callback(new Error("No permitido por CORS")); // Bloquear la solicitud
+        }
+    },
+};
+
+app.use(cors(corsOptions));
+// app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB Atlas
