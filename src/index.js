@@ -10,8 +10,7 @@ const cors = require("cors");
 //crear servidor
 const app = express();
 
-
-// app.use(cors());
+//parsear el cuerpo de las solicitudes HTTP con formato JSON
 app.use(express.json());
 
 // Conectar a MongoDB Atlas
