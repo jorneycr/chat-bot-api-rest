@@ -29,9 +29,9 @@ module.exports = function () {
     router.delete("/api/chatbot/:idChatbot", auth, chatbotController.deleteQuestionById);
 
     /** Auth **/
-    router.post("/auth/signup", usuariosController.registrarUsuario);
+    router.post("/auth/signup", usuariosController.createUser);
 
-    router.post("/auth/login", usuariosController.autenticarUsuario);
+    router.post("/auth/login", usuariosController.authUser);
 
     return router;
 };

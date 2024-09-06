@@ -3,6 +3,7 @@ const Chatbot = require('../models/chatbot');
 // Leer el archivo JSON con las preguntas
 const questionsData = require('../data/initialQuestions.js');
 
+// chat entre bot y usuario
 exports.chat = async (req, res) => {
     const { question } = req.body;
 
@@ -26,6 +27,7 @@ exports.chat = async (req, res) => {
     }
 }
 
+//obtiene la lista de preguntas con el comando /preguntas
 exports.questions = async (req, res) => {
     try {
         const questions = await Chatbot.find({});
@@ -37,6 +39,7 @@ exports.questions = async (req, res) => {
     }
 }
 
+//agrega un array de preguntas y respuestas
 exports.importQuestions = async (req, res) => {
     try {
       for (const questionData of questionsData) {
@@ -56,6 +59,7 @@ exports.importQuestions = async (req, res) => {
     }
   };
 
+// agrega un pregunta y respuesta
 exports.addQuestion = async (req, res) => {
     const chatbot = new Chatbot(req.body);
 
@@ -71,6 +75,7 @@ exports.addQuestion = async (req, res) => {
     }
 };
 
+//recuperar todas las preguntas y respuestas
 exports.getAllQuestions = async (req, res) => {
     try {
         const questions = await Chatbot.find({});
@@ -81,6 +86,7 @@ exports.getAllQuestions = async (req, res) => {
     }
 }
 
+//obtiene una pregunta por el idChatbot
 exports.getQuestionById = async (req, res) => {
     try {
         const chatbot = await Chatbot.findById(req.params.idChatbot);
@@ -94,6 +100,7 @@ exports.getQuestionById = async (req, res) => {
     }
 }
 
+//actualiza una pregunta por el idChatbot
 exports.updateQuestionById = async (req, res) => {
     try {
         const chatbot = await Chatbot.findOneAndUpdate({ _id: req.params.idChatbot }, req.body, { new: true });
@@ -104,6 +111,7 @@ exports.updateQuestionById = async (req, res) => {
     }
 }
 
+//elimina una pregunta por el idChatbot
 exports.deleteQuestionById = async (req, res) => {
     try {
         const chatbot = await Chatbot.findById(req.params.idChatbot);

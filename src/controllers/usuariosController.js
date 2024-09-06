@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Usuarios = require('../models/Usuarios');
 
-exports.registrarUsuario = async (req, res) => {
+exports.createUser = async (req, res) => {
     const usuario = new Usuario(req.body);
     usuario.password = await bcrypt.hash(req.body.password, 12);
 
@@ -16,7 +16,7 @@ exports.registrarUsuario = async (req, res) => {
     }
 }
 
-exports.autenticarUsuario = async (req, res) => {
+exports.authUser = async (req, res) => {
     const { email, password } = req.body;
     const usuario = await Usuarios.findOne({ email });
 
